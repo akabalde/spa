@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WFA_Spa
 {
-    public partial class Form1 : Form
+    public partial class FRM_Inicio : Form
     {
-        public Form1()
+        public FRM_Inicio()
         {
             InitializeComponent();
         }
