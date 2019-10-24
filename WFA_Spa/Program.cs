@@ -16,7 +16,8 @@ namespace WFA_Spa
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FRM_Inicio());
+            //Application.Run(new FRM_Inicio());
+            Application.Run(new FRM_Cliente_Alta());
         }
     }
 }

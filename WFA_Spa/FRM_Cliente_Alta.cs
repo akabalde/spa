@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WFA_Spa
 {
-    public partial class FRM_Paciente_Alta : Form
+    public partial class FRM_Cliente_Alta : Form
     {
-        public FRM_Paciente_Alta()
+        public FRM_Cliente_Alta()
         {
             InitializeComponent();
         }
