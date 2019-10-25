@@ -22,5 +22,26 @@ namespace WFA_Spa.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=Spa;Integrated Security=True")]
+        public string AdministrarConnectionString {
+            get {
+                return ((string)(this["AdministrarConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Spa;Integrated Security=True;C" +
+            "onnect Timeout=30;Encrypt=False;TrustServerCertificate=False")]
+        public string SpaConnectionString {
+            get {
+                return ((string)(this["SpaConnectionString"]));
+            }
+        }
     }
 }
