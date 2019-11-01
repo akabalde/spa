@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WFA_Spa
@@ -15,6 +8,36 @@ namespace WFA_Spa
         public FRM_Inicio()
         {
             InitializeComponent();
+        }
+
+        private void FRM_Inicio_Load(object sender, EventArgs e)
+        {
+            DGV_Turnos_Refresh();
+        }
+
+        private void DGV_Turnos_Refresh()
+        {
+            using (DataClassesSpaDataContext db = new DataClassesSpaDataContext())
+            {
+                DGV_Turnos.DataSource = db.View_Turnos;
+            }
+        }
+
+        private void BTN_Turnos_Agregar_Click(object sender, EventArgs e)
+        {
+            using (FRM_Turno_Alta frm = new FRM_Turno_Alta())
+            {
+                frm.ShowDialog();
+                DGV_Turnos_Refresh();
+            }
+        }
+
+        private void ClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (FRM_Cliente frm = new FRM_Cliente())
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }

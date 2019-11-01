@@ -48,13 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataClasses1.cs">
-      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    <Compile Include="DataClassesSpa.cs">
+      <DependentUpon>DataClassesSpa.dbml</DependentUpon>
     </Compile>
-    <Compile Include="DataClasses1.designer.cs">
-      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    <Compile Include="DataClassesSpa.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>DataClassesSpa.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_Cliente.Designer.cs">
+      <DependentUpon>FRM_Cliente.cs</DependentUpon>
     </Compile>
     <Compile Include="FRM_Inicio.cs">
       <SubType>Form</SubType>
@@ -76,6 +82,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FRM_Cliente.resx">
+      <DependentUpon>FRM_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRM_Inicio.resx">
       <DependentUpon>FRM_Inicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,13 +104,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DataClasses1.dbml">
+    <None Include="DataClassesSpa.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <LastGenOutput>DataClassesSpa.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataClasses1.dbml.layout">
-      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    <None Include="DataClassesSpa.dbml.layout">
+      <DependentUpon>DataClassesSpa.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -118,6 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClassesSpa">
+  <DataContextMoniker Name="/DataClassesSpaDataContext" />
+  <nestedChildShapes>
+    <classShape Id="fe00c578-69b2-4f72-a303-b9ca9c96ad71" absoluteBounds="3.5, 0.875, 2, 1.7708968091756105">
+      <DataClassMoniker Name="/DataClassesSpaDataContext/Turno" />
+      <nestedChildShapes>
+        <elementListCompartment Id="87e03bb1-d7da-4965-8a01-015a0c55420d" absoluteBounds="3.5150000005960464, 1.3350000008940697, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e14ea56c-4787-419d-9d1a-e61f99e97562" absoluteBounds="0.75, 4.875, 2, 2.3478011060506105">
+      <DataClassMoniker Name="/DataClassesSpaDataContext/Cliente" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8e6812b9-2718-47d6-9816-1bf674a171b7" absoluteBounds="0.76500000059604645, 5.33500000089407, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 5.34699625651042); (3.59375 : 5.34699625651042); (3.59375 : 2.64589680917561)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesSpaDataContext/Cliente/Cliente_Turno" />
+      <nodes>
+        <classShapeMoniker Id="e14ea56c-4787-419d-9d1a-e61f99e97562" />
+        <classShapeMoniker Id="fe00c578-69b2-4f72-a303-b9ca9c96ad71" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="72a24f63-7d88-4011-833b-b2b1ed915f24" absoluteBounds="0.75, 1.25, 2, 1.1939925123006105">
+      <DataClassMoniker Name="/DataClassesSpaDataContext/Tratamiento" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2094e143-cd18-484d-aa0c-9e5efa2603f8" absoluteBounds="0.76500000059604645, 1.7100000008940697, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.84699625615031); (3.5 : 1.84699625615031)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClassesSpaDataContext/Tratamiento/Tratamiento_Turno" />
+      <nodes>
+        <classShapeMoniker Id="72a24f63-7d88-4011-833b-b2b1ed915f24" />
+        <classShapeMoniker Id="fe00c578-69b2-4f72-a303-b9ca9c96ad71" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e94297dc-83de-4cd6-901b-7213c847668a" absoluteBounds="3.75, 3.75, 2, 1.193992513020834">
+      <DataClassMoniker Name="/DataClassesSpaDataContext/View_Cliente" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3a828f4-6b3d-4932-a54c-3f33d8d22ab9" absoluteBounds="3.7650000000000006, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="596c65d5-874d-4453-86e2-3dbaee75ba23" absoluteBounds="3.75, 5.75, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/DataClassesSpaDataContext/View_Turno" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b0cd9899-fc79-45d6-b966-dae93fe05d40" absoluteBounds="3.7649999999999997, 6.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

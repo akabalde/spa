@@ -32,11 +32,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.TXT_Nombre = new System.Windows.Forms.TextBox();
+            this.TXT_Apellido = new System.Windows.Forms.TextBox();
+            this.TXT_DNI = new System.Windows.Forms.TextBox();
+            this.TXT_Email = new System.Windows.Forms.TextBox();
+            this.BTN_Agregar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -79,58 +79,59 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Email";
             // 
-            // textBox1
+            // TXT_Nombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(200, 42);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(148, 26);
-            this.textBox1.TabIndex = 4;
+            this.TXT_Nombre.Location = new System.Drawing.Point(200, 42);
+            this.TXT_Nombre.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TXT_Nombre.Name = "TXT_Nombre";
+            this.TXT_Nombre.Size = new System.Drawing.Size(148, 26);
+            this.TXT_Nombre.TabIndex = 4;
             // 
-            // textBox2
+            // TXT_Apellido
             // 
-            this.textBox2.Location = new System.Drawing.Point(510, 42);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(148, 26);
-            this.textBox2.TabIndex = 5;
+            this.TXT_Apellido.Location = new System.Drawing.Point(510, 42);
+            this.TXT_Apellido.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TXT_Apellido.Name = "TXT_Apellido";
+            this.TXT_Apellido.Size = new System.Drawing.Size(148, 26);
+            this.TXT_Apellido.TabIndex = 5;
             // 
-            // textBox3
+            // TXT_DNI
             // 
-            this.textBox3.Location = new System.Drawing.Point(200, 82);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(148, 26);
-            this.textBox3.TabIndex = 6;
+            this.TXT_DNI.Location = new System.Drawing.Point(200, 82);
+            this.TXT_DNI.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TXT_DNI.Name = "TXT_DNI";
+            this.TXT_DNI.Size = new System.Drawing.Size(148, 26);
+            this.TXT_DNI.TabIndex = 6;
             // 
-            // textBox4
+            // TXT_Email
             // 
-            this.textBox4.Location = new System.Drawing.Point(510, 82);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(148, 26);
-            this.textBox4.TabIndex = 7;
+            this.TXT_Email.Location = new System.Drawing.Point(510, 82);
+            this.TXT_Email.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TXT_Email.Name = "TXT_Email";
+            this.TXT_Email.Size = new System.Drawing.Size(148, 26);
+            this.TXT_Email.TabIndex = 7;
             // 
-            // button1
+            // BTN_Agregar
             // 
-            this.button1.Location = new System.Drawing.Point(548, 143);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 35);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BTN_Agregar.Location = new System.Drawing.Point(548, 143);
+            this.BTN_Agregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BTN_Agregar.Name = "BTN_Agregar";
+            this.BTN_Agregar.Size = new System.Drawing.Size(112, 35);
+            this.BTN_Agregar.TabIndex = 8;
+            this.BTN_Agregar.Text = "Agregar";
+            this.BTN_Agregar.UseVisualStyleBackColor = true;
+            this.BTN_Agregar.Click += new System.EventHandler(this.BTN_Agregar_Click);
             // 
             // FRM_Cliente_Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(756, 218);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.BTN_Agregar);
+            this.Controls.Add(this.TXT_Email);
+            this.Controls.Add(this.TXT_DNI);
+            this.Controls.Add(this.TXT_Apellido);
+            this.Controls.Add(this.TXT_Nombre);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -149,10 +150,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox TXT_Nombre;
+        private System.Windows.Forms.TextBox TXT_Apellido;
+        private System.Windows.Forms.TextBox TXT_DNI;
+        private System.Windows.Forms.TextBox TXT_Email;
+        private System.Windows.Forms.Button BTN_Agregar;
     }
 }
