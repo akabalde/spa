@@ -12,16 +12,20 @@ namespace WFA_Spa
 
         private void BTN_Agregar_Click(object sender, EventArgs e)
         {
-            using (DataClassesSpaDataContext db = new DataClassesSpaDataContext())
-            {
-                db.SP_Cliente_Agregar(TXT_Nombre.Text, TXT_Apellido.Text, TXT_DNI.Text, TXT_Email.Text);
-                
-                TXT_Nombre.Text = "";
-                TXT_Apellido.Text = "";
-                TXT_DNI.Text = "";
-                TXT_Email.Text = "";
+            //if (datosValidos)
+            //{
+                Clientes.Agregar(TXT_Nombre.Text, TXT_Apellido.Text, TXT_DNI.Text, TXT_Email.Text);
+            //}
 
-            }
+            Clean();
+        }
+
+        private void Clean()
+        {
+            TXT_Nombre.Text = "";
+            TXT_Apellido.Text = "";
+            TXT_DNI.Text = "";
+            TXT_Email.Text = "";
         }
     }
 }

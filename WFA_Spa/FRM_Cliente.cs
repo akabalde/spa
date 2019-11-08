@@ -10,7 +10,7 @@ namespace WFA_Spa
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             using (FRM_Cliente_Alta frm = new FRM_Cliente_Alta())
             {
@@ -33,5 +33,7 @@ namespace WFA_Spa
                 DGV_Clientes.DataSource = db.Clientes;
             }
         }
+
+
     }
 }
