@@ -63,6 +63,12 @@
     <Compile Include="FRM_Cliente.Designer.cs">
       <DependentUpon>FRM_Cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_Cliente_Editar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_Cliente_Editar.Designer.cs">
+      <DependentUpon>FRM_Cliente_Editar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FRM_Cliente.resx">
       <DependentUpon>FRM_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_Cliente_Editar.resx">
+      <DependentUpon>FRM_Cliente_Editar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_Inicio.resx">
       <DependentUpon>FRM_Inicio.cs</DependentUpon>

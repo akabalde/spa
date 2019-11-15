@@ -23,7 +23,6 @@ namespace WFA_Spa
         private void FRM_Cliente_Load(object sender, EventArgs e)
         {
             DGV_Clientes_Refresh();
-
         }
 
         private void DGV_Clientes_Refresh()
@@ -34,6 +33,43 @@ namespace WFA_Spa
             }
         }
 
+        private void BTN_Borrar_Click(object sender, EventArgs e)
+        {
+            if (DGV_Clientes.SelectedRows.Count != 0)
+            {
+                int ID_SelectedRow = int.Parse(DGV_Clientes.SelectedRows[0].Cells[0].Value.ToString());
 
+                Clientes.Borrar(ID_SelectedRow);
+
+                DGV_Clientes_Refresh();
+            }
+
+        }
+
+        private void BTN_Editar_Click(object sender, EventArgs e)
+        {
+            if (DGV_Clientes.SelectedRows.Count != 0)
+            {
+                int ID_SelectedRow = int.Parse(DGV_Clientes.SelectedRows[0].Cells[0].Value.ToString());
+
+                using (FRM_Cliente_Editar frm = new FRM_Cliente_Editar(ID_SelectedRow))
+                {
+                    frm.ShowDialog();
+                    DGV_Clientes_Refresh();
+
+                }
+
+                //using (DataClasses1DataContext db = new DataClasses1DataContext())
+                //{
+                //    db.editarEstados(int.Parse(TXT_Editar_1.Text), TXT_Editar_3.Text);
+
+                //    TXT_Editar_1.Text = "";
+                //    TXT_Editar_2.Text = "";
+                //    TXT_Editar_3.Text = "";
+
+                //    Estados_Refresh();
+                //}
+            }
+        }
     }
 }
