@@ -23,6 +23,7 @@ namespace WFA_Spa
                 CBX_Tratamiento.DataSource = db.Tratamientos;
             }
 
+            DTP_Turno.MinDate = DateTime.Now;
         }
 
         private void BTN_Agregar_Click(object sender, EventArgs e)

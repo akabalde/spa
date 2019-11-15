@@ -68,7 +68,7 @@
             this.CBX_Tratamiento.FormattingEnabled = true;
             this.CBX_Tratamiento.Location = new System.Drawing.Point(181, 85);
             this.CBX_Tratamiento.Name = "CBX_Tratamiento";
-            this.CBX_Tratamiento.Size = new System.Drawing.Size(257, 28);
+            this.CBX_Tratamiento.Size = new System.Drawing.Size(343, 28);
             this.CBX_Tratamiento.TabIndex = 1;
             // 
             // BTN_Agregar
@@ -92,13 +92,14 @@
             // 
             // DTP_Turno
             // 
-            this.DTP_Turno.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.DTP_Turno.CustomFormat = "dddd dd/MM/yyyy - hh:mm";
+            this.DTP_Turno.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DTP_Turno.Location = new System.Drawing.Point(181, 139);
-            this.DTP_Turno.MinDate = new System.DateTime(2019, 10, 31, 0, 0, 0, 0);
+            this.DTP_Turno.MinDate = new System.DateTime(2019, 11, 15, 0, 37, 47, 0);
             this.DTP_Turno.Name = "DTP_Turno";
-            this.DTP_Turno.Size = new System.Drawing.Size(200, 26);
+            this.DTP_Turno.Size = new System.Drawing.Size(343, 26);
             this.DTP_Turno.TabIndex = 2;
-            this.DTP_Turno.Value = new System.DateTime(2019, 10, 31, 21, 51, 25, 0);
+            this.DTP_Turno.Value = new System.DateTime(2019, 11, 15, 0, 37, 47, 0);
             // 
             // FRM_Turno_Alta
             // 
