@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Spa]    Script Date: 1/11/2019 04:31:34 ******/
+/****** Object:  Database [Spa]    Script Date: 15/11/2019 12:33:55 ******/
 CREATE DATABASE [Spa]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -87,7 +87,7 @@ ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
 GO
 USE [Spa]
 GO
-/****** Object:  Table [dbo].[Cliente]    Script Date: 1/11/2019 04:31:34 ******/
+/****** Object:  Table [dbo].[Cliente]    Script Date: 15/11/2019 12:33:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -107,17 +107,7 @@ CREATE TABLE [dbo].[Cliente](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  View [dbo].[View_Cliente]    Script Date: 1/11/2019 04:31:34 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE VIEW [dbo].[View_Cliente]
-AS
-SELECT Nombre + ', ' + Apellido + ' - DNI: ' + LTRIM(STR(DNI)) AS Cliente, Id
-FROM   dbo.Cliente
-GO
-/****** Object:  Table [dbo].[Tratamiento]    Script Date: 1/11/2019 04:31:34 ******/
+/****** Object:  Table [dbo].[Tratamiento]    Script Date: 15/11/2019 12:33:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +121,7 @@ CREATE TABLE [dbo].[Tratamiento](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Turno]    Script Date: 1/11/2019 04:31:34 ******/
+/****** Object:  Table [dbo].[Turno]    Script Date: 15/11/2019 12:33:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -148,21 +138,35 @@ CREATE TABLE [dbo].[Turno](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  View [dbo].[View_Turno]    Script Date: 1/11/2019 04:31:34 ******/
+/****** Object:  View [dbo].[View_Turno]    Script Date: 15/11/2019 12:33:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE VIEW [dbo].[View_Turno]
 AS
-SELECT dbo.Turno.Id AS Nro, CAST(dbo.Turno.HoraInicio AS date) AS Fecha, CAST(dbo.Turno.HoraInicio AS time) AS Hora, dbo.Tratamiento.Nombre AS Tratamiento, dbo.Cliente.Apellido + ', ' + dbo.Cliente.Nombre AS Cliente, dbo.Cliente.DNI
+SELECT dbo.Turno.Id AS Nro, FORMAT(dbo.Turno.HoraInicio, 'dd/MM/yy') AS Fecha, FORMAT(dbo.Turno.HoraInicio, 'hh:mm') AS Hora, dbo.Tratamiento.Nombre AS Tratamiento, dbo.Cliente.Apellido + ', ' + dbo.Cliente.Nombre AS Cliente, dbo.Cliente.DNI
 FROM   dbo.Turno INNER JOIN
              dbo.Tratamiento ON dbo.Turno.IdTratamiento = dbo.Tratamiento.Id INNER JOIN
              dbo.Cliente ON dbo.Turno.IdCliente = dbo.Cliente.Id
 GO
+/****** Object:  View [dbo].[View_Cliente]    Script Date: 15/11/2019 12:33:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[View_Cliente]
+AS
+SELECT Apellido + ', ' + Nombre + ' - DNI: ' + LTRIM(STR(DNI)) AS Cliente, Id
+FROM   dbo.Cliente
+GO
 SET IDENTITY_INSERT [dbo].[Cliente] ON 
 GO
 INSERT [dbo].[Cliente] ([Id], [DNI], [Nombre], [Apellido], [Telefono], [Email], [Direccion], [Localidad]) VALUES (1, 37991371, N'Diego', N'Balderrama', 1168073232, N'diegobalderrama93@gmail.com', N'Calle Falsa 123', N'Ituzaingo')
+GO
+INSERT [dbo].[Cliente] ([Id], [DNI], [Nombre], [Apellido], [Telefono], [Email], [Direccion], [Localidad]) VALUES (2, 25654222, N'Lucas', N'Gutierrez', 1165453320, N'lucas.gu@gmail.com', N'Florida 200', N'Morón')
+GO
+INSERT [dbo].[Cliente] ([Id], [DNI], [Nombre], [Apellido], [Telefono], [Email], [Direccion], [Localidad]) VALUES (3, 30212211, N'Maria', N'Pérez', 1165654565, N'm.perez@live.com', N'Av. Rivadavia 300', N'CABA')
 GO
 SET IDENTITY_INSERT [dbo].[Cliente] OFF
 GO
@@ -192,7 +196,7 @@ REFERENCES [dbo].[Tratamiento] ([Id])
 GO
 ALTER TABLE [dbo].[Turno] CHECK CONSTRAINT [FK_Turno_Tratamiento]
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Cliente_Agregar]    Script Date: 1/11/2019 04:31:34 ******/
+/****** Object:  StoredProcedure [dbo].[SP_Cliente_Agregar]    Script Date: 15/11/2019 12:33:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -219,7 +223,63 @@ BEGIN
 	insert into Cliente(Nombre,Apellido,DNI,Email) values (@nombre, @apellido,@dni,@email)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Turno_Agregar]    Script Date: 1/11/2019 04:31:34 ******/
+/****** Object:  StoredProcedure [dbo].[SP_Cliente_Borrar]    Script Date: 15/11/2019 12:33:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Name
+-- Create date: 
+-- Description:	
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_Cliente_Borrar] 
+	-- Add the parameters for the stored procedure here
+	@idCliente int = 0 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	DELETE FROM Cliente WHERE Id=@idCliente
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_Cliente_Editar]    Script Date: 15/11/2019 12:33:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Name
+-- Create date: 
+-- Description:	
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_Cliente_Editar] 
+	-- Add the parameters for the stored procedure here
+	@idCliente int,
+	@nombre varchar(50), 
+	@apellido varchar(50),
+	@DNI varchar(50),
+	@email varchar(50)
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	UPDATE Cliente SET Nombre = @nombre, 
+	Apellido=@apellido, 
+	DNI=@DNI,
+	Email=@email
+	where Id = @idCliente;
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_Turno_Agregar]    Script Date: 15/11/2019 12:33:55 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -372,7 +432,7 @@ Begin DesignProperties =
    Begin PaneConfigurations = 
       Begin PaneConfiguration = 0
          NumPanes = 4
-         Configuration = "(H (1[37] 4[25] 2[20] 3) )"
+         Configuration = "(H (1[40] 4[20] 2[20] 3) )"
       End
       Begin PaneConfiguration = 1
          NumPanes = 3
@@ -440,10 +500,10 @@ Begin DesignProperties =
       Begin Tables = 
          Begin Table = "Turno"
             Begin Extent = 
-               Top = 23
-               Left = 156
-               Bottom = 220
-               Right = 378
+               Top = 9
+               Left = 57
+               Bottom = 206
+               Right = 279
             End
             DisplayFlags = 280
             TopColumn = 0
@@ -451,9 +511,9 @@ Begin DesignProperties =
          Begin Table = "Tratamiento"
             Begin Extent = 
                Top = 9
-               Left = 435
+               Left = 336
                Bottom = 152
-               Right = 657
+               Right = 558
             End
             DisplayFlags = 280
             TopColumn = 0
@@ -461,12 +521,12 @@ Begin DesignProperties =
          Begin Table = "Cliente"
             Begin Extent = 
                Top = 9
-               Left = 714
+               Left = 615
                Bottom = 206
-               Right = 936
+               Right = 837
             End
             DisplayFlags = 280
-            TopColumn = 1
+            TopColumn = 0
          End
       End
    End
@@ -475,15 +535,8 @@ Begin DesignProperties =
    Begin DataPane = 
       Begin ParameterDefaults = ""
       End
-      Begin ColumnWidths = 16
+      Begin ColumnWidths = 9
          Width = 284
-         Width = 340
-         Width = 2140
-         Width = 1510
-         Width = 1590
-         Width = 930
-         Width = 1000
-         Width = 1590
          Width = 1000
          Width = 1000
          Width = 1000
@@ -496,7 +549,7 @@ Begin DesignProperties =
    End
    Begin CriteriaPane = 
       Begin ColumnWidths = 11
-         Column = 3150
+         Column = 1440
          Alias = 900
          Table = 1170
          Output = 720

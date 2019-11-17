@@ -803,9 +803,9 @@ namespace WFA_Spa
 		
 		private int _Nro;
 		
-		private System.Nullable<System.DateTime> _Fecha;
+		private string _Fecha;
 		
-		private System.Nullable<System.TimeSpan> _Hora;
+		private string _Hora;
 		
 		private string _Tratamiento;
 		
@@ -833,8 +833,8 @@ namespace WFA_Spa
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecha", DbType="Date")]
-		public System.Nullable<System.DateTime> Fecha
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Fecha", DbType="NVarChar(4000)")]
+		public string Fecha
 		{
 			get
 			{
@@ -849,8 +849,8 @@ namespace WFA_Spa
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hora", DbType="Time")]
-		public System.Nullable<System.TimeSpan> Hora
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Hora", DbType="NVarChar(4000)")]
+		public string Hora
 		{
 			get
 			{

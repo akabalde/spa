@@ -40,8 +40,8 @@
   <Table Name="dbo.View_Turno" Member="View_Turnos">
     <Type Name="View_Turno">
       <Column Name="Nro" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="Hora" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Hora" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
       <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="Cliente" Type="System.String" DbType="VarChar(102) NOT NULL" CanBeNull="false" />
       <Column Name="DNI" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />

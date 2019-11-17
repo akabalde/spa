@@ -12,7 +12,14 @@ namespace WFA_Spa
 
         private void FRM_Inicio_Load(object sender, EventArgs e)
         {
-            DGV_Turnos_Refresh();
+            DGV_Turnos_Refresh();            
+            SetFormatting();
+
+        }
+
+        private void SetFormatting()
+        {
+            DGV_Turnos.DefaultCellStyle.NullValue = " - - - ";
         }
 
         private void DGV_Turnos_Refresh()
