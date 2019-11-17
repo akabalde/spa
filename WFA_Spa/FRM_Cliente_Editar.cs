@@ -13,6 +13,7 @@ namespace WFA_Spa
     public partial class FRM_Cliente_Editar : Form
     {
         private readonly int iD_SelectedRow;
+        private Cliente cliente = null;
 
         public FRM_Cliente_Editar(int iD_SelectedRow)
         {
@@ -23,10 +24,10 @@ namespace WFA_Spa
 
         private void FRM_Cliente_Editar_Load(object sender, EventArgs e)
         {
-            FillForm();
+            cliente = FillForm();
         }
         
-        private void FillForm()
+        private Cliente FillForm()
         {
             Cliente cliente = Clientes.Buscar(iD_SelectedRow);
 
@@ -34,13 +35,14 @@ namespace WFA_Spa
             TXT_Apellido.Text = cliente.Apellido;
             TXT_DNI.Text = cliente.DNI.ToString();
             TXT_Email.Text = cliente.Email;
+
+            return cliente;
         }
         
         private void BTN_Guardar_Click(object sender, EventArgs e)
         {
-            //var user = (from u in dc.Users
-            //            where u.UserName == usn
-            //            select u).FirstOrDefault();
+            Clientes.Editar(cliente.Id, TXT_Nombre.Text, TXT_Apellido.Text,
+                TXT_DNI.Text, TXT_Email.Text);
         }
 
         
