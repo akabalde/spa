@@ -141,5 +141,11 @@
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CL_Spa\CL_Spa.csproj">
+      <Project>{c652eb4e-851d-4778-ba23-1f77838e4a04}</Project>
+      <Name>CL_Spa</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

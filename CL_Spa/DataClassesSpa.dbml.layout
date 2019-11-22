@@ -2,48 +2,48 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClassesSpa">
   <DataContextMoniker Name="/DataClassesSpaDataContext" />
   <nestedChildShapes>
-    <classShape Id="2809d1e3-27da-4aa7-94cd-6bb3e3c3fe88" absoluteBounds="0.75, 4.875, 2, 2.3478011067708344">
+    <classShape Id="c6af52c7-df7a-46dd-87d0-19fb2e59cd6e" absoluteBounds="0.75, 4.75, 2, 2.3478011060506105">
       <DataClassMoniker Name="/DataClassesSpaDataContext/Cliente" />
       <nestedChildShapes>
-        <elementListCompartment Id="1a4e5290-8362-4d54-84a2-9e8fa74ec299" absoluteBounds="0.76500000059604645, 5.33500000089407, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c1139abd-c0d8-4325-8f2d-c7e4df8bf12a" absoluteBounds="0.76500000059604645, 5.21000000089407, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="6c6738c7-469a-4b3c-8852-57bb5a04183d" absoluteBounds="0.75, 1.25, 2, 1.1939925130208335">
-      <DataClassMoniker Name="/DataClassesSpaDataContext/Tratamiento" />
-      <nestedChildShapes>
-        <elementListCompartment Id="2ea0ed46-d36d-4293-b869-9b9a371c4694" absoluteBounds="0.76500000059604645, 1.7100000008940697, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0f11acfe-5c56-4f26-8ff2-5ba77e748163" absoluteBounds="3.5, 0.875, 2, 1.7708968098958335">
+    <classShape Id="8b69608e-c44f-4e3b-838b-edb980bb74c5" absoluteBounds="3.5, 0.875, 2, 1.5785953775048256">
       <DataClassMoniker Name="/DataClassesSpaDataContext/Turno" />
       <nestedChildShapes>
-        <elementListCompartment Id="cce74cf3-8149-44cf-8e7b-5c447bbf0509" absoluteBounds="3.5150000005960464, 1.3350000008940697, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a063e04a-e799-442a-9b1c-251ab6223fea" absoluteBounds="3.5150000005960464, 1.3350000008940697, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 5.34699625651042); (3.59375 : 5.34699625651042); (3.59375 : 2.64589680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="12aeb6fe-56d1-4356-a5b0-23c15d9a4387" absoluteBounds="0.75, 1.125, 2, 1.1939925123006105">
+      <DataClassMoniker Name="/DataClassesSpaDataContext/Tratamiento" />
+      <nestedChildShapes>
+        <elementListCompartment Id="df94a10c-9d6c-4534-bcb5-14123eb50d51" absoluteBounds="0.76500000059604645, 1.5850000008940697, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 5.34699625651042); (3.59375 : 5.34699625651042); (3.59375 : 2.45359537750483)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataClassesSpaDataContext/Cliente/Cliente_Turno" />
       <nodes>
-        <classShapeMoniker Id="2809d1e3-27da-4aa7-94cd-6bb3e3c3fe88" />
-        <classShapeMoniker Id="0f11acfe-5c56-4f26-8ff2-5ba77e748163" />
+        <classShapeMoniker Id="c6af52c7-df7a-46dd-87d0-19fb2e59cd6e" />
+        <classShapeMoniker Id="8b69608e-c44f-4e3b-838b-edb980bb74c5" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 1.84699625651042); (3.5 : 1.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.72199625615031); (3.5 : 1.72199625615031)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DataClassesSpaDataContext/Tratamiento/Tratamiento_Turno" />
       <nodes>
-        <classShapeMoniker Id="6c6738c7-469a-4b3c-8852-57bb5a04183d" />
-        <classShapeMoniker Id="0f11acfe-5c56-4f26-8ff2-5ba77e748163" />
+        <classShapeMoniker Id="12aeb6fe-56d1-4356-a5b0-23c15d9a4387" />
+        <classShapeMoniker Id="8b69608e-c44f-4e3b-838b-edb980bb74c5" />
       </nodes>
     </associationConnector>
-    <classShape Id="6f8fcd2c-8fd4-4ba4-a1db-ad7e4bb397b5" absoluteBounds="3.75, 3.75, 2, 1.193992513020834">
+    <classShape Id="2683f4f5-2243-4d5b-a262-563b55c763d7" absoluteBounds="3.75, 3.75, 2, 1.1939925130208344">
       <DataClassMoniker Name="/DataClassesSpaDataContext/View_Cliente" />
       <nestedChildShapes>
-        <elementListCompartment Id="2ff42ce9-8af0-408a-84ea-67dbd433111b" absoluteBounds="3.7649999999999997, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="e1eb6db8-11b9-4759-b895-384047745388" absoluteBounds="3.765, 4.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="926f4ff0-f6e6-4eb0-ac2f-7830c77877d1" absoluteBounds="3.75, 5.75, 2, 1.9631982421875005">
+    <classShape Id="a6c1d19c-82dc-40f4-ad86-a5dddb82e7ea" absoluteBounds="3.75, 5.75, 2, 1.9631982421875005">
       <DataClassMoniker Name="/DataClassesSpaDataContext/View_Turno" />
       <nestedChildShapes>
-        <elementListCompartment Id="2b92e62e-f13c-442c-a12f-d63a675d7878" absoluteBounds="3.7649999999999997, 6.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="c9a94b1d-c18a-4f1f-a2ab-3dfd7d4cf838" absoluteBounds="3.765, 6.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
