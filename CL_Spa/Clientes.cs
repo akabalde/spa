@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace WFA_Spa
+namespace CL_Spa
 {
     class Clientes
     {
@@ -29,11 +29,10 @@ namespace WFA_Spa
 
         public static void Borrar(int ID_Cliente)
         {
-            //if (ClienteTieneTurnos())
+            //if (!ExisteCliente())
             //{
             using (DataClassesSpaDataContext db = new DataClassesSpaDataContext())
             {
-
                 db.SP_Cliente_Borrar(ID_Cliente);
             }
             //}
@@ -48,9 +47,9 @@ namespace WFA_Spa
                 cliente =
                     (Cliente)db.Clientes.SingleOrDefault(u => u.Id == ID_Cliente);
 
-                //var user = (from c in db.Clientes
-                //            where c.Id == ID_Cliente
-                //            select c).FirstOrDefault();
+                //var user = (from u in dc.Users
+                //            where u.UserName == usn
+                //            select u).FirstOrDefault();
             }
 
             return cliente;
@@ -59,21 +58,6 @@ namespace WFA_Spa
         private static bool ExisteCliente()
         {
             throw new NotImplementedException();
-        }
-
-        public static bool ClienteTieneTurnos(int ID_Cliente)
-        { 
-            using (DataClassesSpaDataContext db = new DataClassesSpaDataContext())
-            {
-                var t = (from c in db.Turnos
-                         where c.IdCliente == ID_Cliente
-                         select c).FirstOrDefault();
-
-                if (t != null)
-                    return true;
-                else
-                    return false;
-            }
         }
     }
 

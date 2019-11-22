@@ -43,6 +43,8 @@ namespace WFA_Spa
         {
             Clientes.Editar(cliente.Id, TXT_Nombre.Text, TXT_Apellido.Text,
                 TXT_DNI.Text, TXT_Email.Text);
+
+            this.Close();
         }
 
         

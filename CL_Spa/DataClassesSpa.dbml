@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Spa" Class="DataClassesSpaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(localdb)\mssqllocaldb;Initial Catalog=Spa;Integrated Security=True" SettingsObjectName="WFA_Spa.Properties.Settings" SettingsPropertyName="AdministrarConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(localdb)\mssqllocaldb;Initial Catalog=Spa;Integrated Security=True" SettingsObjectName="CL_Spa.Properties.Settings" SettingsPropertyName="SpaConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Cliente" Member="Clientes">
     <Type Name="Cliente">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="DNI" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Apellido" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
@@ -15,9 +15,20 @@
   </Table>
   <Table Name="dbo.Tratamiento" Member="Tratamientos">
     <Type Name="Tratamiento">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nombre" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Association Name="Tratamiento_Turno" Member="Turnos" ThisKey="Id" OtherKey="IdTratamiento" Type="Turno" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Turno" Member="Turnos">
+    <Type Name="Turno">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdTratamiento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HoraInicio" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HoraFin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Cliente_Turno" Member="Cliente" ThisKey="IdCliente" OtherKey="Id" Type="Cliente" IsForeignKey="true" />
+      <Association Name="Tratamiento_Turno" Member="Tratamiento" ThisKey="IdTratamiento" OtherKey="Id" Type="Tratamiento" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.View_Cliente" Member="View_Clientes">
@@ -36,27 +47,17 @@
       <Column Name="DNI" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Turno" Member="Turnos">
-    <Type Name="Turno">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="IdCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IdTratamiento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="HoraInicio" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Cliente_Turno" Member="Cliente" ThisKey="IdCliente" OtherKey="Id" Type="Cliente" IsForeignKey="true" />
-      <Association Name="Tratamiento_Turno" Member="Tratamiento" ThisKey="IdTratamiento" OtherKey="Id" Type="Tratamiento" IsForeignKey="true" />
-    </Type>
-  </Table>
+  <Function Name="dbo.SP_Turno_Agregar" Method="SP_Turno_Agregar">
+    <Parameter Name="idCliente" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idTratamiento" Type="System.Int32" DbType="Int" />
+    <Parameter Name="hora" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.SP_Cliente_Agregar" Method="SP_Cliente_Agregar">
     <Parameter Name="nombre" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="apellido" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="dni" Type="System.String" DbType="VarChar(50)" />
     <Parameter Name="email" Type="System.String" DbType="VarChar(50)" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.SP_Turno_Agregar" Method="SP_Turno_Agregar">
-    <Parameter Name="idCliente" Type="System.Int32" DbType="Int" />
-    <Parameter Name="idTratamiento" Type="System.Int32" DbType="Int" />
-    <Parameter Name="hora" Type="System.DateTime" DbType="DateTime" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.SP_Cliente_Borrar" Method="SP_Cliente_Borrar">

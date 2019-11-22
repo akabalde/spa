@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WFA_Spa
+namespace CL_Spa
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -42,7 +42,7 @@ namespace WFA_Spa
     #endregion
 		
 		public DataClassesSpaDataContext() : 
-				base(global::WFA_Spa.Properties.Settings.Default.AdministrarConnectionString, mappingSource)
+				base(global::CL_Spa.Properties.Settings.Default.SpaConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -87,6 +87,14 @@ namespace WFA_Spa
 			}
 		}
 		
+		public System.Data.Linq.Table<Turno> Turnos
+		{
+			get
+			{
+				return this.GetTable<Turno>();
+			}
+		}
+		
 		public System.Data.Linq.Table<View_Cliente> View_Clientes
 		{
 			get
@@ -103,25 +111,17 @@ namespace WFA_Spa
 			}
 		}
 		
-		public System.Data.Linq.Table<Turno> Turnos
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Turno_Agregar")]
+		public int SP_Turno_Agregar([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idCliente, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idTratamiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> hora)
 		{
-			get
-			{
-				return this.GetTable<Turno>();
-			}
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idCliente, idTratamiento, hora);
+			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Cliente_Agregar")]
 		public int SP_Cliente_Agregar([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string dni, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string email)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), nombre, apellido, dni, email);
-			return ((int)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SP_Turno_Agregar")]
-		public int SP_Turno_Agregar([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idCliente, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idTratamiento, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="DateTime")] System.Nullable<System.DateTime> hora)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idCliente, idTratamiento, hora);
 			return ((int)(result.ReturnValue));
 		}
 		
@@ -192,7 +192,7 @@ namespace WFA_Spa
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -426,7 +426,7 @@ namespace WFA_Spa
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -509,6 +509,246 @@ namespace WFA_Spa
 		{
 			this.SendPropertyChanging();
 			entity.Tratamiento = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Turno")]
+	public partial class Turno : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _IdCliente;
+		
+		private int _IdTratamiento;
+		
+		private System.DateTime _HoraInicio;
+		
+		private System.Nullable<System.DateTime> _HoraFin;
+		
+		private EntityRef<Cliente> _Cliente;
+		
+		private EntityRef<Tratamiento> _Tratamiento;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnIdClienteChanging(int value);
+    partial void OnIdClienteChanged();
+    partial void OnIdTratamientoChanging(int value);
+    partial void OnIdTratamientoChanged();
+    partial void OnHoraInicioChanging(System.DateTime value);
+    partial void OnHoraInicioChanged();
+    partial void OnHoraFinChanging(System.Nullable<System.DateTime> value);
+    partial void OnHoraFinChanged();
+    #endregion
+		
+		public Turno()
+		{
+			this._Cliente = default(EntityRef<Cliente>);
+			this._Tratamiento = default(EntityRef<Tratamiento>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCliente", DbType="Int NOT NULL")]
+		public int IdCliente
+		{
+			get
+			{
+				return this._IdCliente;
+			}
+			set
+			{
+				if ((this._IdCliente != value))
+				{
+					if (this._Cliente.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdClienteChanging(value);
+					this.SendPropertyChanging();
+					this._IdCliente = value;
+					this.SendPropertyChanged("IdCliente");
+					this.OnIdClienteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdTratamiento", DbType="Int NOT NULL")]
+		public int IdTratamiento
+		{
+			get
+			{
+				return this._IdTratamiento;
+			}
+			set
+			{
+				if ((this._IdTratamiento != value))
+				{
+					if (this._Tratamiento.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdTratamientoChanging(value);
+					this.SendPropertyChanging();
+					this._IdTratamiento = value;
+					this.SendPropertyChanged("IdTratamiento");
+					this.OnIdTratamientoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraInicio", DbType="DateTime NOT NULL")]
+		public System.DateTime HoraInicio
+		{
+			get
+			{
+				return this._HoraInicio;
+			}
+			set
+			{
+				if ((this._HoraInicio != value))
+				{
+					this.OnHoraInicioChanging(value);
+					this.SendPropertyChanging();
+					this._HoraInicio = value;
+					this.SendPropertyChanged("HoraInicio");
+					this.OnHoraInicioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraFin", DbType="DateTime")]
+		public System.Nullable<System.DateTime> HoraFin
+		{
+			get
+			{
+				return this._HoraFin;
+			}
+			set
+			{
+				if ((this._HoraFin != value))
+				{
+					this.OnHoraFinChanging(value);
+					this.SendPropertyChanging();
+					this._HoraFin = value;
+					this.SendPropertyChanged("HoraFin");
+					this.OnHoraFinChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cliente_Turno", Storage="_Cliente", ThisKey="IdCliente", OtherKey="Id", IsForeignKey=true)]
+		public Cliente Cliente
+		{
+			get
+			{
+				return this._Cliente.Entity;
+			}
+			set
+			{
+				Cliente previousValue = this._Cliente.Entity;
+				if (((previousValue != value) 
+							|| (this._Cliente.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Cliente.Entity = null;
+						previousValue.Turnos.Remove(this);
+					}
+					this._Cliente.Entity = value;
+					if ((value != null))
+					{
+						value.Turnos.Add(this);
+						this._IdCliente = value.Id;
+					}
+					else
+					{
+						this._IdCliente = default(int);
+					}
+					this.SendPropertyChanged("Cliente");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tratamiento_Turno", Storage="_Tratamiento", ThisKey="IdTratamiento", OtherKey="Id", IsForeignKey=true)]
+		public Tratamiento Tratamiento
+		{
+			get
+			{
+				return this._Tratamiento.Entity;
+			}
+			set
+			{
+				Tratamiento previousValue = this._Tratamiento.Entity;
+				if (((previousValue != value) 
+							|| (this._Tratamiento.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Tratamiento.Entity = null;
+						previousValue.Turnos.Remove(this);
+					}
+					this._Tratamiento.Entity = value;
+					if ((value != null))
+					{
+						value.Turnos.Add(this);
+						this._IdTratamiento = value.Id;
+					}
+					else
+					{
+						this._IdTratamiento = default(int);
+					}
+					this.SendPropertyChanged("Tratamiento");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -670,222 +910,6 @@ namespace WFA_Spa
 				{
 					this._DNI = value;
 				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Turno")]
-	public partial class Turno : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _IdCliente;
-		
-		private int _IdTratamiento;
-		
-		private System.DateTime _HoraInicio;
-		
-		private EntityRef<Cliente> _Cliente;
-		
-		private EntityRef<Tratamiento> _Tratamiento;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnIdClienteChanging(int value);
-    partial void OnIdClienteChanged();
-    partial void OnIdTratamientoChanging(int value);
-    partial void OnIdTratamientoChanged();
-    partial void OnHoraInicioChanging(System.DateTime value);
-    partial void OnHoraInicioChanged();
-    #endregion
-		
-		public Turno()
-		{
-			this._Cliente = default(EntityRef<Cliente>);
-			this._Tratamiento = default(EntityRef<Tratamiento>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCliente", DbType="Int NOT NULL")]
-		public int IdCliente
-		{
-			get
-			{
-				return this._IdCliente;
-			}
-			set
-			{
-				if ((this._IdCliente != value))
-				{
-					if (this._Cliente.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdClienteChanging(value);
-					this.SendPropertyChanging();
-					this._IdCliente = value;
-					this.SendPropertyChanged("IdCliente");
-					this.OnIdClienteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdTratamiento", DbType="Int NOT NULL")]
-		public int IdTratamiento
-		{
-			get
-			{
-				return this._IdTratamiento;
-			}
-			set
-			{
-				if ((this._IdTratamiento != value))
-				{
-					if (this._Tratamiento.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdTratamientoChanging(value);
-					this.SendPropertyChanging();
-					this._IdTratamiento = value;
-					this.SendPropertyChanged("IdTratamiento");
-					this.OnIdTratamientoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraInicio", DbType="DateTime NOT NULL")]
-		public System.DateTime HoraInicio
-		{
-			get
-			{
-				return this._HoraInicio;
-			}
-			set
-			{
-				if ((this._HoraInicio != value))
-				{
-					this.OnHoraInicioChanging(value);
-					this.SendPropertyChanging();
-					this._HoraInicio = value;
-					this.SendPropertyChanged("HoraInicio");
-					this.OnHoraInicioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Cliente_Turno", Storage="_Cliente", ThisKey="IdCliente", OtherKey="Id", IsForeignKey=true)]
-		public Cliente Cliente
-		{
-			get
-			{
-				return this._Cliente.Entity;
-			}
-			set
-			{
-				Cliente previousValue = this._Cliente.Entity;
-				if (((previousValue != value) 
-							|| (this._Cliente.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Cliente.Entity = null;
-						previousValue.Turnos.Remove(this);
-					}
-					this._Cliente.Entity = value;
-					if ((value != null))
-					{
-						value.Turnos.Add(this);
-						this._IdCliente = value.Id;
-					}
-					else
-					{
-						this._IdCliente = default(int);
-					}
-					this.SendPropertyChanged("Cliente");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Tratamiento_Turno", Storage="_Tratamiento", ThisKey="IdTratamiento", OtherKey="Id", IsForeignKey=true)]
-		public Tratamiento Tratamiento
-		{
-			get
-			{
-				return this._Tratamiento.Entity;
-			}
-			set
-			{
-				Tratamiento previousValue = this._Tratamiento.Entity;
-				if (((previousValue != value) 
-							|| (this._Tratamiento.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Tratamiento.Entity = null;
-						previousValue.Turnos.Remove(this);
-					}
-					this._Tratamiento.Entity = value;
-					if ((value != null))
-					{
-						value.Turnos.Add(this);
-						this._IdTratamiento = value.Id;
-					}
-					else
-					{
-						this._IdTratamiento = default(int);
-					}
-					this.SendPropertyChanged("Tratamiento");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

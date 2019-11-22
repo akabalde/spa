@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Spa]    Script Date: 15/11/2019 12:33:55 ******/
+/****** Object:  Database [Spa]    Script Date: 22/11/2019 00:16:09 ******/
 CREATE DATABASE [Spa]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -87,7 +87,7 @@ ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
 GO
 USE [Spa]
 GO
-/****** Object:  Table [dbo].[Cliente]    Script Date: 15/11/2019 12:33:55 ******/
+/****** Object:  Table [dbo].[Cliente]    Script Date: 22/11/2019 00:16:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -107,7 +107,7 @@ CREATE TABLE [dbo].[Cliente](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tratamiento]    Script Date: 15/11/2019 12:33:55 ******/
+/****** Object:  Table [dbo].[Tratamiento]    Script Date: 22/11/2019 00:16:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -121,7 +121,7 @@ CREATE TABLE [dbo].[Tratamiento](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Turno]    Script Date: 15/11/2019 12:33:55 ******/
+/****** Object:  Table [dbo].[Turno]    Script Date: 22/11/2019 00:16:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,14 +131,13 @@ CREATE TABLE [dbo].[Turno](
 	[IdCliente] [int] NOT NULL,
 	[IdTratamiento] [int] NOT NULL,
 	[HoraInicio] [datetime] NOT NULL,
-	[HoraFin] [datetime] NULL,
  CONSTRAINT [PK_Turno] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  View [dbo].[View_Turno]    Script Date: 15/11/2019 12:33:55 ******/
+/****** Object:  View [dbo].[View_Turno]    Script Date: 22/11/2019 00:16:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,7 +149,7 @@ FROM   dbo.Turno INNER JOIN
              dbo.Tratamiento ON dbo.Turno.IdTratamiento = dbo.Tratamiento.Id INNER JOIN
              dbo.Cliente ON dbo.Turno.IdCliente = dbo.Cliente.Id
 GO
-/****** Object:  View [dbo].[View_Cliente]    Script Date: 15/11/2019 12:33:55 ******/
+/****** Object:  View [dbo].[View_Cliente]    Script Date: 22/11/2019 00:16:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,11 +161,11 @@ FROM   dbo.Cliente
 GO
 SET IDENTITY_INSERT [dbo].[Cliente] ON 
 GO
-INSERT [dbo].[Cliente] ([Id], [DNI], [Nombre], [Apellido], [Telefono], [Email], [Direccion], [Localidad]) VALUES (1, 37991371, N'Diego', N'Balderrama', 1168073232, N'diegobalderrama93@gmail.com', N'Calle Falsa 123', N'Ituzaingo')
+INSERT [dbo].[Cliente] ([Id], [DNI], [Nombre], [Apellido], [Telefono], [Email], [Direccion], [Localidad]) VALUES (1, 379913714, N'Diego', N'Balderrama', 1168073232, N'diego-balderrama93@gmail.com', N'Calle Falsa 123', N'Ituzaingo')
 GO
-INSERT [dbo].[Cliente] ([Id], [DNI], [Nombre], [Apellido], [Telefono], [Email], [Direccion], [Localidad]) VALUES (2, 25654222, N'Lucas', N'Gutierrez', 1165453320, N'lucas.gu@gmail.com', N'Florida 200', N'Morón')
+INSERT [dbo].[Cliente] ([Id], [DNI], [Nombre], [Apellido], [Telefono], [Email], [Direccion], [Localidad]) VALUES (2, 30212211, N'Maria', N'Pérez', 1165654565, N'm.perez@live.com', N'Av. Rivadavia 300', N'CABA')
 GO
-INSERT [dbo].[Cliente] ([Id], [DNI], [Nombre], [Apellido], [Telefono], [Email], [Direccion], [Localidad]) VALUES (3, 30212211, N'Maria', N'Pérez', 1165654565, N'm.perez@live.com', N'Av. Rivadavia 300', N'CABA')
+INSERT [dbo].[Cliente] ([Id], [DNI], [Nombre], [Apellido], [Telefono], [Email], [Direccion], [Localidad]) VALUES (3, 25654222, N'Lucas', N'Gutierrez', 1165453320, N'lucas.gu@gmail.com', N'Florida 200', N'Morón')
 GO
 SET IDENTITY_INSERT [dbo].[Cliente] OFF
 GO
@@ -182,7 +181,9 @@ SET IDENTITY_INSERT [dbo].[Tratamiento] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Turno] ON 
 GO
-INSERT [dbo].[Turno] ([Id], [IdCliente], [IdTratamiento], [HoraInicio], [HoraFin]) VALUES (1, 1, 1, CAST(N'2019-09-06T00:00:00.000' AS DateTime), CAST(N'2019-09-06T00:00:00.000' AS DateTime))
+INSERT [dbo].[Turno] ([Id], [IdCliente], [IdTratamiento], [HoraInicio]) VALUES (1, 1, 1, CAST(N'2019-09-06T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Turno] ([Id], [IdCliente], [IdTratamiento], [HoraInicio]) VALUES (2, 3, 1, CAST(N'2019-11-28T23:20:17.000' AS DateTime))
 GO
 SET IDENTITY_INSERT [dbo].[Turno] OFF
 GO
@@ -196,7 +197,7 @@ REFERENCES [dbo].[Tratamiento] ([Id])
 GO
 ALTER TABLE [dbo].[Turno] CHECK CONSTRAINT [FK_Turno_Tratamiento]
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Cliente_Agregar]    Script Date: 15/11/2019 12:33:55 ******/
+/****** Object:  StoredProcedure [dbo].[SP_Cliente_Agregar]    Script Date: 22/11/2019 00:16:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -223,7 +224,7 @@ BEGIN
 	insert into Cliente(Nombre,Apellido,DNI,Email) values (@nombre, @apellido,@dni,@email)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Cliente_Borrar]    Script Date: 15/11/2019 12:33:55 ******/
+/****** Object:  StoredProcedure [dbo].[SP_Cliente_Borrar]    Script Date: 22/11/2019 00:16:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -247,7 +248,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Cliente_Editar]    Script Date: 15/11/2019 12:33:55 ******/
+/****** Object:  StoredProcedure [dbo].[SP_Cliente_Editar]    Script Date: 22/11/2019 00:16:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -279,7 +280,7 @@ BEGIN
 	where Id = @idCliente;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Turno_Agregar]    Script Date: 15/11/2019 12:33:55 ******/
+/****** Object:  StoredProcedure [dbo].[SP_Turno_Agregar]    Script Date: 22/11/2019 00:16:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

@@ -14,7 +14,6 @@ namespace WFA_Spa
         {
             DGV_Turnos_Refresh();            
             SetFormatting();
-
         }
 
         private void SetFormatting()
@@ -45,6 +44,11 @@ namespace WFA_Spa
             {
                 frm.ShowDialog();
             }
+        }
+
+        private void FRM_Inicio_Activated(object sender, EventArgs e)
+        {
+            DGV_Turnos_Refresh();
         }
     }
 }

@@ -39,7 +39,10 @@ namespace WFA_Spa
             {
                 int ID_SelectedRow = int.Parse(DGV_Clientes.SelectedRows[0].Cells[0].Value.ToString());
 
-                Clientes.Borrar(ID_SelectedRow);
+                if (Clientes.ClienteTieneTurnos(ID_SelectedRow))
+                    MessageBox.Show("El cliente no puede borrarse por que tiene turnos asociados", "Info", 0, MessageBoxIcon.Information);
+                else
+                    Clientes.Borrar(ID_SelectedRow);
 
                 DGV_Clientes_Refresh();
             }

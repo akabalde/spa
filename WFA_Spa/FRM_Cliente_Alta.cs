@@ -20,6 +20,7 @@ namespace WFA_Spa
                                  TXT_Email.Text);            
                 
                 Clean();
+                this.Close();
             }
             else
             {

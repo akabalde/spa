@@ -39,6 +39,8 @@ namespace WFA_Spa
                 db.SP_Turno_Agregar(Id_Cliente, Id_Tratamiento, Fecha_Hora);
             }
 
+            this.Close();
+
             //TXTModelo.Text = TXTModelo.Text.Trim();
 
             //if (Agregar(TXTModelo.Text))

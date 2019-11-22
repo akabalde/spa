@@ -148,6 +148,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FRM_Inicio";
             this.Text = "Spa Manager";
+            this.Activated += new System.EventHandler(this.FRM_Inicio_Activated);
             this.Load += new System.EventHandler(this.FRM_Inicio_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
