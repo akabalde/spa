@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BTN_Guardar = new System.Windows.Forms.Button();
             this.TXT_Email = new System.Windows.Forms.TextBox();
             this.TXT_DNI = new System.Windows.Forms.TextBox();
@@ -37,6 +38,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // BTN_Guardar
@@ -65,6 +68,7 @@
             this.TXT_DNI.Name = "TXT_DNI";
             this.TXT_DNI.Size = new System.Drawing.Size(148, 26);
             this.TXT_DNI.TabIndex = 15;
+            this.TXT_DNI.Validating += new System.ComponentModel.CancelEventHandler(this.TXT_DNI_Validating);
             // 
             // TXT_Apellido
             // 
@@ -122,6 +126,10 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Nombre";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FRM_Cliente_Editar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -139,6 +147,7 @@
             this.Name = "FRM_Cliente_Editar";
             this.Text = "Editar cliente";
             this.Load += new System.EventHandler(this.FRM_Cliente_Editar_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +164,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

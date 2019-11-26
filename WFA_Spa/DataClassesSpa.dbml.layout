@@ -29,7 +29,7 @@
     <classShape Id="c526f7ea-2c1f-4e20-ae52-34a81bd9d82b" absoluteBounds="3.5, 0.875, 2, 1.5785953776041666">
       <DataClassMoniker Name="/DataClassesSpaDataContext/Turno" />
       <nestedChildShapes>
-        <elementListCompartment Id="1a194bd4-fef6-45bf-b7a5-a2a673780d09" absoluteBounds="3.5149999999999997, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1a194bd4-fef6-45bf-b7a5-a2a673780d09" absoluteBounds="3.5150000005960464, 1.3350000008940697, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(2.75 : 5.34699625651042); (3.59375 : 5.34699625651042); (3.59375 : 2.45359537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,6 +38,8 @@
             this.TXT_DNI = new System.Windows.Forms.TextBox();
             this.TXT_Email = new System.Windows.Forms.TextBox();
             this.BTN_Agregar = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -102,6 +105,7 @@
             this.TXT_DNI.Name = "TXT_DNI";
             this.TXT_DNI.Size = new System.Drawing.Size(148, 26);
             this.TXT_DNI.TabIndex = 6;
+            this.TXT_DNI.Validating += new System.ComponentModel.CancelEventHandler(this.TXT_DNI_Validating);
             // 
             // TXT_Email
             // 
@@ -122,6 +126,10 @@
             this.BTN_Agregar.UseVisualStyleBackColor = true;
             this.BTN_Agregar.Click += new System.EventHandler(this.BTN_Agregar_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FRM_Cliente_Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -139,6 +147,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FRM_Cliente_Alta";
             this.Text = "Alta de cliente";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +164,6 @@
         private System.Windows.Forms.TextBox TXT_DNI;
         private System.Windows.Forms.TextBox TXT_Email;
         private System.Windows.Forms.Button BTN_Agregar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
