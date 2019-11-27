@@ -48,15 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clientes.cs" />
-    <Compile Include="DataClassesSpa.cs">
-      <DependentUpon>DataClassesSpa.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="DataClassesSpa.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataClassesSpa.dbml</DependentUpon>
-    </Compile>
     <Compile Include="FRM_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,14 +105,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DataClassesSpa.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DataClassesSpa.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DataClassesSpa.dbml.layout">
-      <DependentUpon>DataClassesSpa.dbml</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
