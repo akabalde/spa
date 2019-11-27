@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Spa]    Script Date: 22/11/2019 00:16:09 ******/
+/****** Object:  Database [Spa]    Script Date: 26/11/2019 16:43:31 ******/
 CREATE DATABASE [Spa]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -87,7 +87,7 @@ ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
 GO
 USE [Spa]
 GO
-/****** Object:  Table [dbo].[Cliente]    Script Date: 22/11/2019 00:16:09 ******/
+/****** Object:  Table [dbo].[Cliente]    Script Date: 26/11/2019 16:43:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -107,7 +107,7 @@ CREATE TABLE [dbo].[Cliente](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Tratamiento]    Script Date: 22/11/2019 00:16:09 ******/
+/****** Object:  Table [dbo].[Tratamiento]    Script Date: 26/11/2019 16:43:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -121,7 +121,7 @@ CREATE TABLE [dbo].[Tratamiento](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Turno]    Script Date: 22/11/2019 00:16:09 ******/
+/****** Object:  Table [dbo].[Turno]    Script Date: 26/11/2019 16:43:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -137,7 +137,7 @@ CREATE TABLE [dbo].[Turno](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  View [dbo].[View_Turno]    Script Date: 22/11/2019 00:16:09 ******/
+/****** Object:  View [dbo].[View_Turno]    Script Date: 26/11/2019 16:43:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -149,7 +149,7 @@ FROM   dbo.Turno INNER JOIN
              dbo.Tratamiento ON dbo.Turno.IdTratamiento = dbo.Tratamiento.Id INNER JOIN
              dbo.Cliente ON dbo.Turno.IdCliente = dbo.Cliente.Id
 GO
-/****** Object:  View [dbo].[View_Cliente]    Script Date: 22/11/2019 00:16:09 ******/
+/****** Object:  View [dbo].[View_Cliente]    Script Date: 26/11/2019 16:43:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,7 +185,15 @@ INSERT [dbo].[Turno] ([Id], [IdCliente], [IdTratamiento], [HoraInicio]) VALUES (
 GO
 INSERT [dbo].[Turno] ([Id], [IdCliente], [IdTratamiento], [HoraInicio]) VALUES (2, 3, 1, CAST(N'2019-11-28T23:20:17.000' AS DateTime))
 GO
+INSERT [dbo].[Turno] ([Id], [IdCliente], [IdTratamiento], [HoraInicio]) VALUES (3, 1, 1, CAST(N'2020-11-26T09:39:52.000' AS DateTime))
+GO
 SET IDENTITY_INSERT [dbo].[Turno] OFF
+GO
+/****** Object:  Index [AK_Cliente_DNI]    Script Date: 26/11/2019 16:43:31 ******/
+ALTER TABLE [dbo].[Cliente] ADD  CONSTRAINT [AK_Cliente_DNI] UNIQUE NONCLUSTERED 
+(
+	[DNI] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[Turno]  WITH CHECK ADD  CONSTRAINT [FK_Turno_Cliente] FOREIGN KEY([IdCliente])
 REFERENCES [dbo].[Cliente] ([Id])
@@ -197,7 +205,7 @@ REFERENCES [dbo].[Tratamiento] ([Id])
 GO
 ALTER TABLE [dbo].[Turno] CHECK CONSTRAINT [FK_Turno_Tratamiento]
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Cliente_Agregar]    Script Date: 22/11/2019 00:16:09 ******/
+/****** Object:  StoredProcedure [dbo].[SP_Cliente_Agregar]    Script Date: 26/11/2019 16:43:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -224,7 +232,35 @@ BEGIN
 	insert into Cliente(Nombre,Apellido,DNI,Email) values (@nombre, @apellido,@dni,@email)
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Cliente_Borrar]    Script Date: 22/11/2019 00:16:09 ******/
+/****** Object:  StoredProcedure [dbo].[SP_Cliente_Agregar_2]    Script Date: 26/11/2019 16:43:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		Name
+-- Create date: 
+-- Description:	
+-- =============================================
+CREATE PROCEDURE [dbo].[SP_Cliente_Agregar_2] 
+	-- Add the parameters for the stored procedure here
+	@nombre varchar(50) = '', 
+	@apellido varchar(50) = '',
+	@dni bigint, 
+	@email varchar(50) = ''
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	insert into Cliente(Nombre,Apellido,DNI,Email) values (@nombre, @apellido,@dni,@email)
+END
+GO
+/****** Object:  StoredProcedure [dbo].[SP_Cliente_Borrar]    Script Date: 26/11/2019 16:43:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -248,7 +284,7 @@ BEGIN
 
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Cliente_Editar]    Script Date: 22/11/2019 00:16:09 ******/
+/****** Object:  StoredProcedure [dbo].[SP_Cliente_Editar]    Script Date: 26/11/2019 16:43:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -280,7 +316,7 @@ BEGIN
 	where Id = @idCliente;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_Turno_Agregar]    Script Date: 22/11/2019 00:16:09 ******/
+/****** Object:  StoredProcedure [dbo].[SP_Turno_Agregar]    Script Date: 26/11/2019 16:43:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
